@@ -140,12 +140,23 @@ class TicTacToe:
         self.start_game()
         player_order = self.player_order()
 
-        while not self.game_ended(self.player) or self.game_ended(self.computer):
-            self.human_move()
-            if self.game_ended(self.player):
-                break
-            self.computer_move()
-            if self.game_ended(self.computer):
-                break
+        if player_order[0] == self.player:
+            while not self.game_ended(self.player) or self.game_ended(self.computer):
+                self.human_move()
+                if self.game_ended(self.player):
+                    break
+                self.computer_move()
+                if self.game_ended(self.computer):
+                    break
+
+        else:
+            while not self.game_ended(self.player) or self.game_ended(self.computer):
+                self.computer_move()
+                if self.game_ended(self.computer):
+                    break
+                self.human_move()
+                if self.game_ended(self.player):
+                    break
 
         print("Game over!")
+
